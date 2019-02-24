@@ -1,3 +1,7 @@
+(*Modélisation des énigmes de Smullyan de la princesse et du tigre en logique des propositions.
+Utilisation de la tactique tauto pour la résolution des énigmes.
+*)
+
 Parameters PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9: Prop.
 Parameters TC1 TC2 TC3 TC4 TC5 TC6 TC7 TC8 TC9: Prop.
 Parameters VC1 VC2 VC3 VC4 VC5 VC6 VC7 VC8 VC9: Prop.
@@ -8,7 +12,7 @@ Definition HY1 : Prop := (A1 /\ ~A2) \/ (A2 /\ ~A1).
 Definition HN2 : Prop := (PC1 \/ TC1) /\ ~(PC1 /\ TC1) /\ (PC2 \/ TC2) /\ ~(PC2 /\ TC2).
 
 Lemma S1 : HY1 /\ HN2 -> PC2.
-
+Proof.
 intro.
 elim H;intros.
 elim H1;intros.
@@ -33,7 +37,7 @@ Definition B2 : Prop := TC2.
 Definition HY2 : Prop := (B1 /\ B2) \/ (~B1 /\ ~B2).
 
 Lemma S2 : HY2 /\ HN2 -> PC1.
-
+Proof.
 intro.
 elim H;intros.
 elim H1;intros.
@@ -61,7 +65,8 @@ Definition C1 : Prop := TC1 \/ PC2.
 Definition C2 : Prop := PC1.
 Definition HY3 : Prop := (C1 /\ C2) \/ (~C1 /\ ~C2).
 
-Lemma S3 : HY3 /\ HN2 -> PC1 /\ PC2. 
+Lemma S3 : HY3 /\ HN2 -> PC1 /\ PC2.
+Proof.
 unfold HY3, C1, C2, HN2.
 tauto.
 Qed.
@@ -70,9 +75,10 @@ Qed.
 
 Definition D1 : Prop := PC1 /\ PC2.
 Definition D2 : Prop := PC1 /\ PC2.
-Definition HY4 : Prop := (PC1 -> D1) /\ (PC2 -> ~D2) /\ (TC1 -> ~D1) /\ (TC1 -> D2).
+Definition HY4 : Prop := (PC1 -> D1) /\ (PC2 -> ~D2) /\ (TC1 -> ~D1) /\ (TC2 -> D2).
 
 Lemma S4 : HY4 /\ HN2 -> PC2. 
+Proof.
 unfold HY4, D1, D2, HN2.
 tauto.
 Qed.
@@ -81,9 +87,10 @@ Qed.
 
 Definition E1 : Prop := PC1 \/ PC2.
 Definition E2 : Prop := PC1.
-Definition HY5 : Prop := (PC1 -> E1) /\ (PC2 -> ~E2) /\ (TC1 -> ~E1) /\ (TC1 -> E2).
+Definition HY5 : Prop := (PC1 -> E1) /\ (PC2 -> ~E2) /\ (TC1 -> ~E1) /\ (TC2 -> E2).
 
 Lemma S5 : HY5 /\ HN2 -> PC1. 
+Proof.
 unfold HY5, E1, E2, HN2.
 tauto.
 Qed.
@@ -91,9 +98,10 @@ Qed.
 
 Definition F1 : Prop := (PC1 /\ PC2) \/ (TC1 /\ TC2).
 Definition F2 : Prop := PC1.
-Definition HY6 : Prop := (PC1 -> F1) /\ (PC2 -> ~F2) /\ (TC1 -> ~F1) /\ (TC1 -> F2).
+Definition HY6 : Prop := (PC1 -> F1) /\ (PC2 -> ~F2) /\ (TC1 -> ~F1) /\ (TC2 -> F2).
 
 Lemma S6 : HY6 /\ HN2 -> PC2.
+Proof.
 unfold HY6, F1, F2, HN2.
 tauto.
 Qed.
@@ -102,9 +110,10 @@ Qed.
 
 Definition G1 : Prop := (PC1 /\ TC2) \/ (TC1 /\ PC2).
 Definition G2 : Prop := PC1 /\ TC2.
-Definition HY7 : Prop := (PC1 -> G1) /\ (PC2 -> ~G2) /\ (TC1 -> ~G1) /\ (TC1 -> G2).
+Definition HY7 : Prop := (PC1 -> G1) /\ (PC2 -> ~G2) /\ (TC1 -> ~G1) /\ (TC2 -> G2).
 
 Lemma S7 : HY7 /\ HN2 -> PC1.
+Proof.
 unfold HY7, G1, G2, HN2.
 tauto.
 Qed.
@@ -115,10 +124,11 @@ Definition I1 : Prop := TC1 /\ TC2.
 Definition I2 : Prop := TC2.
 Definition J1 : Prop := TC1.
 Definition J2 : Prop := TC1 /\ TC2.
-Definition HY8 : Prop := (PC1 -> I1) /\ (PC2 -> ~I2) /\ (TC1 -> ~I1) /\ (TC1 -> I2)
-                         /\ (PC1 -> J1) /\ (PC2 -> ~J2) /\ (TC1 -> ~J1) /\ (TC1 -> J2).
+Definition HY8 : Prop := (PC1 -> I1) /\ (PC2 -> ~I2) /\ (TC1 -> ~I1) /\ (TC2 -> I2)
+                         /\ (PC1 -> J1) /\ (PC2 -> ~J2) /\ (TC1 -> ~J1) /\ (TC2 -> J2).
 
 Lemma S8 : HY8 /\ HN2 -> PC2.
+Proof.
 unfold HY8, I1, I2, J1, J2, HN2.
 tauto.
 Qed.
@@ -132,6 +142,7 @@ Definition HY9 : Prop := (K1 /\ ~K2 /\ ~K3) \/ (~K1 /\ K2 /\ ~K3) \/ (~K1 /\ ~K2
 Definition HN3 : Prop := (PC1 \/ TC1) /\ ~(PC1 /\ TC1) /\ (PC2 \/ TC2) /\ ~(PC2 /\ TC2) /\ (PC3 \/ TC3) /\ ~(PC3 /\ TC3).
 
 Lemma S9 : HY9 /\ HN3 -> PC1.
+Proof.
 unfold HY9, K1, K2, K3, HN3.
 tauto.
 Qed.
@@ -146,6 +157,7 @@ Definition HY10 : Prop := (PC1 -> (L1 /\ (~L2 \/ ~L3)))
                        /\ (PC3 -> (L3 /\ (~L2 \/ ~L1))).
 
 Lemma S10 : HY10 /\ HN3 /\ HD10 -> PC1.
+Proof.
 unfold HY10, L1, L2, L3, HN3, HD10.
 tauto.
 Qed.
@@ -167,6 +179,7 @@ Definition HN3V : Prop := ((PC1 /\ ~TC1 /\ ~VC1) \/ (~PC1 /\ TC1 /\ ~VC1) \/ (~P
                       /\ ((PC3 /\ ~TC3 /\ ~VC3) \/ (~PC3 /\ TC3 /\ ~VC3) \/ (~PC3 /\ ~TC3 /\ VC3)).
 
 Lemma S11 : HY11 /\ HD11 /\ HN3V -> PC1.
+Proof.
 unfold HY11, M1, M2, M3, HN3V, HD11.
 tauto.
 Qed.
@@ -212,9 +225,9 @@ Definition HN9 : Prop := ((PC1 /\ ~TC1 /\ ~VC1) \/ (~PC1 /\ TC1 /\ ~VC1) \/ (~PC
                       /\ ((PC8 /\ ~TC8 /\ ~VC8) \/ (~PC8 /\ TC8 /\ ~VC8) \/ (~PC8 /\ ~TC8 /\ VC8))
                       /\ ((PC9 /\ ~TC9 /\ ~VC9) \/ (~PC9 /\ TC9 /\ ~VC9) \/ (~PC9 /\ ~TC9 /\ VC9)).
 
-Lemma S12 : (HY12 /\ HD12 /\ HN9 /\ VC8 -> PC7) \/ (HY12 /\ HD12 /\ HN9 /\ ~VC8 -> PC7).
+Lemma S12 : HY12 /\ HD12 /\ HN9 /\ ~VC8 -> PC7.
+Proof.
 unfold HY12, N9, N8, N6, N3, N7, N5, N4, N2, N1, HD12, HN9.
-left.
-tauto.
+Timeout 10 tauto.
 Qed.
 

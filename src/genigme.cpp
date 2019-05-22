@@ -45,6 +45,7 @@ int main(int argc, char *argv[]){
     }
     
     if(!fin){
+      cout << "Tentative de génération d'une énigme à " << nbcell << " cellules, une princesse, " << (v?"avec":"sans") << " cellules vides et " << (v?"avec":"sans") << " arbre d'affiches..." << endl;
       srand (time(NULL));
       bool trouve = false;
       Enigme e1(nbcell, 1, 1, v);
@@ -63,8 +64,8 @@ int main(int argc, char *argv[]){
 	cout << "Une énigme bien formée a été générée en " << cpt << " essai" << (cpt==1?".":"s.") << endl;
       }
       else
-	cout << "Aucune énigme bien formée à été générée en " << cpt << " essais." << endl;
-	  }
+	cout << "Aucune énigme bien formée n'a été générée en " << cpt << " essais." << endl;
+    }
   }
   return 0;
 }

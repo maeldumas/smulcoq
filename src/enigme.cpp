@@ -66,10 +66,9 @@ Enigme::Enigme(unsigned int n, unsigned int min, unsigned int max, bool vide){
 }
 
 Enigme::Enigme(string filename){
-  //this->readfile(filename);
   ifstream in(filename, ios::in);
   if(!in.is_open()){
-    cerr << "le fichier " << filename << "n'a pas pu être ouvert, arret du programme"<<endl;
+    cerr << "le fichier " << filename << " n'a pas pu être ouvert, arret du programme"<<endl;
     terminate();
   }
   string line;
@@ -258,7 +257,7 @@ bool Enigme::test_validite(){
   string C;
   bool r=true, p, np;
   int i=1, nbp=0, nbt=0;
-  while(i <= nbcell && r){
+  while(r && i<=nbcell){
     C = "(PC" + to_string(i) + ")";
     p = consequenceH(C);
     C = "(!PC" + to_string(i) + ")";

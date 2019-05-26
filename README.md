@@ -57,4 +57,4 @@ Attention à utiliser les bons connecteurs logiques (&,|,->,<->,!),
 à bien parenthéser les formules et à bien respecter l'ordre des affiches. 
 ```
 
-Dans le dossier *exemples*, l'énigme 1 et 3 des énigmes de la princesses et du tigres sont disponibles au format accepté par `solvigme`.
+Dans le dossier *exemples*, l'énigme 1 et 3 de la princesses et du tigre sont disponibles au format accepté par `solvigme`.

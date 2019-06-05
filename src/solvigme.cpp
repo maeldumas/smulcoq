@@ -29,6 +29,10 @@ int main(int argc, char *argv[]){
     string out_name;      
     bool coq = false;
     bool fin = false;
+    if(input_file == "-h"){
+	cout << USAGE;
+	fin = true;
+    }
     for(int i=2; !fin && i<argc; i++){
       string arg = argv[i];
       if(arg == "-h"){
